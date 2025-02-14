@@ -1,0 +1,35 @@
+{% load static tailwind_tags %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" class="bg-zinc-100">
+{% load pwa %}
+{% progressive_web_app_meta %}
+
+<head>
+  {% tailwind_css %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@3.0.0/dist/flowbite.min.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body class="bg-white text-black transition-colors duration-300 max-w-6xl mx-auto">
+
+  {% include "topnav.html" %}
+
+  {% block content %}
+  {% endblock content %}
+
+  {% include 'footer.html' %}
+
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@3.0.0/dist/flowbite.min.js"></script>
+  <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+  <script src="{% static 'js/menu.js' %}"></script>
+  <script src="{% static 'js/darkmode.js' %}"></script>
+  <script src="{% static 'js/selected_currency.js' %}"></script>
+
+</body>
+
+</html>

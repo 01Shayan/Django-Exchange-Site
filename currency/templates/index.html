@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+FarnazEx
+{% endblock %}
+
+{% block content %}
+
+<div class="container sm:my-56 my-28 p-6 bg-zinc-300 shadow-lg rounded-md duration-300 mx-auto sm:max-w-2xl max-w-md">
+  <!-- Header Section -->
+  <div class="flex justify-between items-center mb-4 duration-300">
+    <div class="flex justify-between items-center md:text-lg text-xs font-semi bold duration-300">
+      <h1 class="mr-1 md:mr-2">{{ today }}</h1>
+      <h1 class="font-bold">|</h1>
+      <h1 class="ml-1 md:ml-2">{{ time }}</h1>
+    </div>
+    {% if show_prices_fee %}
+    <span class="text-red-500 md:text-sm text-xs md:font-bold duration-300">Prices Fee {{ prices_fee }}%</span>
+    {% endif %}
+
+  </div>
+  <!-- Exchange Rates Table -->
+  <table class="w-full table-auto text-black text-xs md:text-lg duration-300">
+    <thead>
+      <tr class="bg-zinc-400 text-left sm:text-sm text-xs font-medium">
+        <th class="sm:p-3 p-1 border border-zinc-300">Currency Type</th>
+        <th class="sm:p-3 p-1 border border-zinc-300 text-center">BUY</th>
+        <th class="sm:p-3 p-1 border border-zinc-300 text-center">SELL</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for currency in currencies %}
+      <tr class="odd:bg-zinc-100 even:bg-zinc-200">
+        <td class="sm:p-2 p-1 flex items-center space-x-2">
+          <img src="{{ currency.flag_url }}" alt="{{ currency.code }}"
+            class="border border-zinc-300 sm:w-16 sm:h-10 w-8 h-6 duration-300">
+          <span>{{ currency.code }} {{ currency.name }}</span>
+        </td>
+        <td class="sm:p-2 p-1 border-l border-zinc-300 text-center">{{ currency.buy_rate }}</td>
+        <td class="sm:p-2 p-1 border-l border-zinc-300 text-center">{{ currency.sell_rate }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock content %}

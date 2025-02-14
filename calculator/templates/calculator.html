@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+FarnazEx - Calculator
+{% endblock %}
+
+{% block content %}
+<div class="text-black flex justify-center items-center h-screen sm:my-20 my-14 p-6">
+  <div class="bg-zinc-300 p-8 shadow-xl rounded-md w-full sm:max-w-lg max-w-xs">
+    <h1 class="text-2xl font-bold mb-4">Convert Currency</h1>
+    {% if error %}
+    <div class="text-red-500">{{ error }}</div>
+    {% endif %}
+    {% if result %}
+    <div class="text-green-500 mb-4">{{ result }}</div>
+    {% endif %}
+    <form method="post" class="space-y-4">
+      {% csrf_token %}
+      <div>
+        <label for="from" class="block font-medium mb-1">From Currency</label>
+        <select id="from" name="from" class="block w-full p-2 border rounded">
+          <option value="USD" {% if from_currency == "USD" %}selected{% endif %}>USD - US Dollar</option>
+          <option value="EUR" {% if from_currency == "EUR" %}selected{% endif %}>EUR - Euro</option>
+          <option value="TRY" {% if from_currency == "TRY" %}selected{% endif %}>TRY - Turkish Lira</option>
+          <option value="IRT" {% if from_currency == "IRT" %}selected{% endif %}>IRT - Iranian Rial</option>
+          <option value="GBP" {% if from_currency == "GBP" %}selected{% endif %}>GBP - British Pound</option>
+          <option value="CHF" {% if from_currency == "CHF" %}selected{% endif %}>CHF - Swiss Franc</option>
+          <option value="SAR" {% if from_currency == "SAR" %}selected{% endif %}>SAR - Saudi Riyal</option>
+          <option value="AUD" {% if from_currency == "AUD" %}selected{% endif %}>AUD - Australian Dollar</option>
+          <option value="CAD" {% if from_currency == "CAD" %}selected{% endif %}>CAD - Canadian Dollar</option>
+          <option value="JPY" {% if from_currency == "JPY" %}selected{% endif %}>JPY - Japanese Yen</option>
+          <option value="SEK" {% if from_currency == "SEK" %}selected{% endif %}>SEK - Swedish Krona</option>
+          <option value="DKK" {% if from_currency == "DKK" %}selected{% endif %}>DKK - Danish Krone</option>
+          <option value="NOK" {% if from_currency == "NOK" %}selected{% endif %}>NOK - Norwegian Krone</option>
+        </select>
+      </div>
+      <div>
+        <label for="to" class="block font-medium mb-1">To Currency</label>
+        <select id="to" name="to" class="block w-full p-2 border rounded">
+          <option value="USD" {% if to_currency == "USD" %}selected{% endif %}>USD - US Dollar</option>
+          <option value="EUR" {% if to_currency == "EUR" %}selected{% endif %}>EUR - Euro</option>
+          <option value="TRY" {% if to_currency == "TRY" %}selected{% endif %}>TRY - Turkish Lira</option>
+          <option value="IRT" {% if to_currency == "IRT" %}selected{% endif %}>IRT - Iranian Rial</option>
+          <option value="GBP" {% if to_currency == "GBP" %}selected{% endif %}>GBP - British Pound</option>
+          <option value="CHF" {% if to_currency == "CHF" %}selected{% endif %}>CHF - Swiss Franc</option>
+          <option value="SAR" {% if to_currency == "SAR" %}selected{% endif %}>SAR - Saudi Riyal</option>
+          <option value="AUD" {% if to_currency == "AUD" %}selected{% endif %}>AUD - Australian Dollar</option>
+          <option value="CAD" {% if to_currency == "CAD" %}selected{% endif %}>CAD - Canadian Dollar</option>
+          <option value="JPY" {% if to_currency == "JPY" %}selected{% endif %}>JPY - Japanese Yen</option>
+          <option value="SEK" {% if to_currency == "SEK" %}selected{% endif %}>SEK - Swedish Krona</option>
+          <option value="DKK" {% if to_currency == "DKK" %}selected{% endif %}>DKK - Danish Krone</option>
+          <option value="NOK" {% if to_currency == "NOK" %}selected{% endif %}>NOK - Norwegian Krone</option>
+        </select>
+      </div>
+      <div>
+        <label for="amount" class="block font-medium mb-1">Amount</label>
+        <input type="number" id="amount" name="amount" value="{{ amount }}" class="block w-full p-2 border rounded mb-4"
+          placeholder="Enter amount" />
+      </div>
+      <button type="submit" class="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600">
+        Convert
+      </button>
+    </form>
+    <!-- <a href="/" class="block mt-4 text-orange-500 underline ">Home</a> -->
+  </div>
+</div>
+{% endblock content %}

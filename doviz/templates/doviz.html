@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+FarnazEx - Doviz
+{% endblock %}
+
+{% block content %}
+
+<div class="container my-20 p-6 bg-zinc-300 shadow-lg rounded-md duration-300 mx-auto sm:max-w-2xl max-w-md">
+	<!-- Header Section -->
+	<div class="flex justify-between items-center mb-4 duration-300">
+		<div class="flex justify-between items-center md:text-lg text-xs font-semi bold duration-300">
+			<!-- <h1 class="mr-2">{{ today }}</h1> -->
+			<!-- <h1 class="ml-0 md:ml-2">{{ time }}</h1> -->
+			<a href="http://www.sakaryadoviz.com.tr/" target="_blank" class="underline text-red-500">Sakarya Doviz Rates</a>
+		</div>
+		<!-- <span class="text-red-500 md:text-sm text-xs md:font-bold duration-300">Prices Fee 0.2%</span> -->
+	</div>
+
+	<!-- Exchange Rates Table -->
+	<table class="w-full table-auto text-black text-xs md:text-lg duration-300">
+		<thead>
+			<tr class="bg-zinc-400 text-left sm:text-sm text-xs font-medium">
+				<th class="sm:p-3 p-1 border border-zinc-300">Currency Type</th>
+				<th class="sm:p-3 p-1 border border-zinc-300 text-center">BUY</th>
+				<th class="sm:p-3 p-1 border border-zinc-300 text-center">SELL</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="odd:bg-zinc-100 even:bg-zinc-200">
+				<td class="sm:p-2 p-1 flex items-center space-x-2">
+					<img src="https://flagcdn.com/w160/us.png" alt="USD"
+						class="border border-zinc-300 sm:w-16 sm:h-10 w-8 h-6 duration-300">
+					<span>USD United States Dollar</span>
+				</td>
+				<td class="sm:p-2 p-1 border-l border-zinc-300 text-center">{{ usd_b_rate }}</td>
+				<td class="sm:p-2 p-1 border-l border-zinc-300 text-center">{{ usd_s_rate }}</td>
+			</tr>
+			<tr class="odd:bg-zinc-100 even:bg-zinc-200">
+				<td class="sm:p-2 p-1 flex items-center space-x-2">
+					<img src="https://flagcdn.com/w160/eu.png" alt="EUR"
+						class="border border-zinc-300 sm:w-16 sm:h-10 w-8 h-6 duration-300">
+					<span>EUR European Union</sapn>
+				</td>
+				<td class="sm:p-2 p-1 border-l border-zinc-300 text-center">{{ eur_b_rate }}</td>
+				<td class="sm:p-2 p-1 border-l border-zinc-300 text-center">{{ eur_s_rate }}</td>
+			</tr>
+			<tr class="odd:bg-zinc-100 even:bg-zinc-200">
+				<td class="sm:p-2 p-1 flex items-center space-x-2">
+					<img src="https://flagcdn.com/w160/gb.png" alt="GBP"
+						class="border border-zinc-300 sm:w-16 sm:h-10 w-8 h-6 duration-300">
+					<snap>GBP British Pound</snap>
+				</td>
+				<td class="sm:p-2 p-1 border-l border-zinc-300 text-center">{{ gbp_b_rate }}</td>
+				<td class="sm:p-2 p-1 border-l border-zinc-300 text-center">{{ gbp_s_rate }}</td>
+			</tr>
+			<tr class="odd:bg-zinc-100 even:bg-zinc-200">
+				<td class="sm:p-2 p-1 flex items-center space-x-2">
+					<img src="https://flagcdn.com/w160/ca.png" alt="CAD"
+						class="border border-zinc-300 sm:w-16 sm:h-10 w-8 h-6 duration-300">
+					<snap>CAD Canadian Dollar</snap>
+				</td>
+				<td class="sm:p-2 p-1 border-l border-zinc-300 text-center">{{ cad_b_rate }}</td>
+				<td class="sm:p-2 p-1 border-l border-zinc-300 text-center">{{ cad_s_rate }}</td>
+			</tr>
+			<tr class="odd:bg-zinc-100 even:bg-zinc-200">
+				<td class="sm:p-2 p-1 flex items-center space-x-2">
+					<img src="https://flagcdn.com/w160/au.png" alt="AUD"
+						class="border border-zinc-300 sm:w-16 sm:h-10 w-8 h-6 duration-300">
+					<snap>AUD Australian Dollar</snap>
+				</td>
+				<td class="sm:p-2 p-1 border-l border-zinc-300 text-center">{{ aud_b_rate }}</td>
+				<td class="sm:p-2 p-1 border-l border-zinc-300 text-center">{{ aud_s_rate }}</td>
+			</tr>
+			<tr class="odd:bg-zinc-100 even:bg-zinc-200">
+				<td class="sm:p-2 p-1 flex items-center space-x-2">
+					<img src="https://flagcdn.com/w160/ir.png" alt="IRT"
+						class="border border-zinc-300 sm:w-16 sm:h-10 w-8 h-6 duration-300">
+					<snap>IRT Iranian Toman</snap>
+				</td>
+				<td class="sm:p-2 p-1 border-l border-zinc-300 text-center">{{ irt_b_rate }}</td>
+				<td class="sm:p-2 p-1 border-l border-zinc-300 text-center">{{ irt_s_rate }}</td>
+			</tr>
+			<tr class="odd:bg-zinc-100 even:bg-zinc-200">
+				<td class="sm:p-2 p-1 flex items-center space-x-2">
+					<img src="https://flagcdn.com/w160/tr.png" alt="TRY"
+						class="border border-zinc-300 sm:w-16 sm:h-10 w-8 h-6 duration-300">
+					<snap>TRY Turkish Lira</snap>
+				</td>
+				<td class="sm:p-2 p-1 border-l border-zinc-300 text-center">{{ try_b_rate }}</td>
+				<td class="sm:p-2 p-1 border-l border-zinc-300 text-center">{{ try_s_rate }}</td>
+			</tr>
+			<tr class="odd:bg-zinc-100 even:bg-zinc-200">
+				<td class="sm:p-2 p-1 flex items-center space-x-2">
+					<img src="https://flagcdn.com/w160/sa.png" alt="SAR"
+						class="border border-zinc-300 sm:w-16 sm:h-10 w-8 h-6 duration-300">
+					<snap>SAR Saudi Riyal</snap>
+				</td>
+				<td class="sm:p-2 p-1 border-l border-zinc-300 text-center">{{ sar_b_rate }}</td>
+				<td class="sm:p-2 p-1 border-l border-zinc-300 text-center">{{ sar_s_rate }}</td>
+			</tr>
+			<tr class="odd:bg-zinc-100 even:bg-zinc-200">
+				<td class="sm:p-2 p-1 flex items-center space-x-2">
+					<img src="https://flagcdn.com/w160/jp.png" alt="JPY"
+						class="border border-zinc-300 sm:w-16 sm:h-10 w-8 h-6 duration-300">
+					<snap>JPY Japanese Yen</snap>
+				</td>
+				<td class="sm:p-2 p-1 border-l border-zinc-300 text-center">{{ jpy_b_rate }}</td>
+				<td class="sm:p-2 p-1 border-l border-zinc-300 text-center">{{ jpy_s_rate }}</td>
+			</tr>
+			<tr class="odd:bg-zinc-100 even:bg-zinc-200">
+				<td class="sm:p-2 p-1 flex items-center space-x-2">
+					<img src="https://flagcdn.com/w160/ch.png" alt="CHF"
+						class="border border-zinc-300 sm:w-16 sm:h-10 w-8 h-6 duration-300">
+					<snap>CHF Swiss Franc</snap>
+				</td>
+				<td class="sm:p-2 p-1 border-l border-zinc-300 text-center">{{ chf_b_rate }}</td>
+				<td class="sm:p-2 p-1 border-l border-zinc-300 text-center">{{ chf_s_rate }}</td>
+			</tr>
+			<tr class="odd:bg-zinc-100 even:bg-zinc-200">
+				<td class="sm:p-2 p-1 flex items-center space-x-2">
+					<img src="https://flagcdn.com/w160/dk.png" alt="DKK"
+						class="border border-zinc-300 sm:w-16 sm:h-10 w-8 h-6 duration-300">
+					<snap>DKK Danish Krone</snap>
+				</td>
+				<td class="sm:p-2 p-1 border-l border-zinc-300 text-center">{{ dkk_b_rate }}</td>
+				<td class="sm:p-2 p-1 border-l border-zinc-300 text-center">{{ dkk_s_rate }}</td>
+			</tr>
+			<tr class="odd:bg-zinc-100 even:bg-zinc-200">
+				<td class="sm:p-2 p-1 flex items-center space-x-2">
+					<img src="https://flagcdn.com/w160/se.png" alt="SEK"
+						class="border border-zinc-300 sm:w-16 sm:h-10 w-8 h-6 duration-300">
+					<snap>SEK Swedish Krona</snap>
+				</td>
+				<td class="sm:p-2 p-1 border-l border-zinc-300 text-center">{{ sek_b_rate }}</td>
+				<td class="sm:p-2 p-1 border-l border-zinc-300 text-center">{{ sek_s_rate }}</td>
+			</tr>
+			<!-- Add similar rows for other currencies -->
+			<tr class="odd:bg-zinc-100 even:bg-zinc-200">
+				<td class="sm:p-2 p-1 flex items-center space-x-2">
+					<img src="https://flagcdn.com/w160/no.png" alt="NOK"
+						class="border border-zinc-300 sm:w-16 sm:h-10 w-8 h-6 duration-300">
+					<span>NOK Norwegian Krone</span>
+				</td>
+				<td class="sm:p-2 p-1 border-l border-zinc-300 text-center">{{ nok_b_rate }}</td>
+				<td class="sm:p-2 p-1 border-l border-zinc-300 text-center">{{ nok_s_rate }}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+{% endblock content %}
